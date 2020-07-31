@@ -267,7 +267,7 @@ def main():
         price=parse_price(input("Total price: "))
     if code and price:
         #More like Old Sprice amirite
-        sprice="£%{0}.{1}".format(*price)
+        sprice="£{0}.{1}".format(*price)
         print("Successfully parsed code and price, starting survey")
         s=requests.Session()
         s.headers["User-Agent"]=DEFAULT_UA
@@ -298,7 +298,7 @@ def main():
                 if offer_code:
                     print("Offer Code: %s"%offer_code)
                     with open(SAVED_CODES,'a')as out:
-                        out.write("%s - %s £%s = %s\r\n"%(get_timestamp(),"-".join(code),sprice,offer_code))
+                        out.write("%s - %s %s = %s\r\n"%(get_timestamp(),"-".join(code),sprice,offer_code))
                     print("Saved to %s"%SAVED_CODES)
                 else:
                     print("Failed to parse final page, saving HTML page")
